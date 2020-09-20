@@ -75,13 +75,13 @@ public class WeaponManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            //TODO:瞄准
+            //TODO:Aim
             carriedWeapon.Aiming(true);
         }
 
         if (Input.GetMouseButtonUp(1))
         {
-            //TODO:退出瞄准
+            //TODO:Stop aim
             carriedWeapon.Aiming(false);
         }
 
@@ -167,7 +167,7 @@ public class WeaponManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (MainWeapon == null) return;
-            //更换为主武器
+            //Change to Primary
             if (carriedWeapon == MainWeapon) return;
             if (carriedWeapon.gameObject.activeInHierarchy)
             {
@@ -182,7 +182,7 @@ public class WeaponManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (SecondaryWeapon == null) return;
-            //更换为副武器
+            //Switch to secondary
             if (carriedWeapon == SecondaryWeapon) return;
             if (carriedWeapon.gameObject.activeInHierarchy)
             {
