@@ -7,9 +7,11 @@ using UnityEngine.Serialization;
 public class FPCharacterControllerMovement : MonoBehaviour
 {
     private CharacterController characterController;
-
+    private Animator characterAnimator;
     private Vector3 movementDirection;
     private Transform characterTransform;
+    private float velocity;
+
 
     private bool isCrouched;
     private float originHeight;
@@ -27,6 +29,7 @@ public class FPCharacterControllerMovement : MonoBehaviour
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        characterAnimator = GetComponentInChildren<Animator>();
         characterTransform = transform;
         originHeight = characterController.height;
     }
@@ -62,6 +65,11 @@ public class FPCharacterControllerMovement : MonoBehaviour
             {
                 tmp_CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? SprintingSpeed : WalkSpeed;
             }
+
+            var tmp_Velocity = characterController.velocity;
+            tmp_Velocity.y = 0;
+            velocity = tmp_Velocity.magnitude;
+            characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
         }
 
         movementDirection.y -= Gravity * Time.deltaTime;
