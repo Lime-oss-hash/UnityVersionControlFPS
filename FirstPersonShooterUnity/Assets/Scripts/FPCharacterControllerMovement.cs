@@ -43,7 +43,15 @@ public class FPCharacterControllerMovement : MonoBehaviour
             var tmp_Horizontal = Input.GetAxis("Horizontal");
             var tmp_Vertical = Input.GetAxis("Vertical");
             movementDirection =
-                characterTransform.TransformDirection(new Vector3(tmp_Horizontal, 0, tmp_Vertical));
+                characterTransform.TransformDirection(new Vector3(tmp_Horizontal, 0, tmp_Vertical)).normalized;
+            if (isCrouched)
+            {
+                tmp_CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? SprintingSpeedWhenCrouched : WalkSpeedWhenCrouched;
+            }
+            else
+            {
+                tmp_CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? SprintingSpeed : WalkSpeed;
+            }
 
             if (Input.GetButtonDown("Jump"))
             {
@@ -57,23 +65,16 @@ public class FPCharacterControllerMovement : MonoBehaviour
                 isCrouched = !isCrouched;
             }
 
-            if (isCrouched)
-            {
-                tmp_CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? SprintingSpeedWhenCrouched : WalkSpeedWhenCrouched;
-            }
-            else
-            {
-                tmp_CurrentSpeed = Input.GetKey(KeyCode.LeftShift) ? SprintingSpeed : WalkSpeed;
-            }
 
-            var tmp_Velocity = characterController.velocity;
-            tmp_Velocity.y = 0;
-            velocity = tmp_Velocity.magnitude;
-            characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
+            characterAnimator.SetFloat("Velocity",
+                tmp_CurrentSpeed * movementDirection.normalized.magnitude,
+                0.25f,
+                Time.deltaTime);
         }
 
         movementDirection.y -= Gravity * Time.deltaTime;
-        characterController.Move(tmp_CurrentSpeed * Time.deltaTime * movementDirection);
+        var tmp_Movement = tmp_CurrentSpeed * Time.deltaTime * movementDirection;
+        characterController.Move(tmp_Movement);
     }
 
 
