@@ -242,7 +242,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
@@ -307,6 +307,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1847886625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3378924646386269289, guid: c4f02dbe426c9be4e93a97820cdc1677,
+    type: 3}
+  m_PrefabInstance: {fileID: 3378924646908553229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1847886627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847886625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685b5b0ef27868b4dbaf8e4734114754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WalkSpeed: 0
+  SprintingSpeed: 0
+  JumpHeight: 0
+  CrouchHeight: 0
+  Gravity: 0
+--- !u!114 &1847886628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847886625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70adc087301470940a1f0205e50e2b18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterTransform: {fileID: 0}
+  MouseSensitivity: 5
+  MaxminAngle: {x: 0, y: 0}
 --- !u!1001 &3378924646908553229
 PrefabInstance:
   m_ObjectHideFlags: 0
