@@ -23,18 +23,6 @@ public class PlayerFootstepListener : MonoBehaviour
     }
 
     public State characterState;
-    
-    //Q:角色发出声音的必备条件
-    //A:角色移动或者发生较大幅度动作的时候发出声音
-
-
-    //Q.如何检测角色是否有移动
-    //A:用Physic API检测
-
-
-    //Q:如何实现角色踩踏位置的对应材质的声音
-    //A:用Physic API检测
-
 
     private void Start()
     {
@@ -71,7 +59,7 @@ public class PlayerFootstepListener : MonoBehaviour
 
                 if (tmp_IsHit)
                 {
-                    //TODO:检测类型
+                    //TODO:Test Categrory
                     foreach (var tmp_AudioElement in FootstepAudioData.FootstepAudios)
                     {
                         if (tmp_HitInfo.collider.CompareTag(tmp_AudioElement.Tag))
@@ -79,7 +67,7 @@ public class PlayerFootstepListener : MonoBehaviour
                           
                             if (nextPlayTime >= tmp_AudioElement.Delay)
                             {
-                                //TODO:播放移动声音
+                                //TODO:Audio output 
                                 int tmp_AudioCount = tmp_AudioElement.AudioClips.Count;
                                 int tmp_AudioIndex = UnityEngine.Random.Range(0, tmp_AudioCount);
                                 AudioClip tmp_FootstepAudioClip = tmp_AudioElement.AudioClips[tmp_AudioIndex];
